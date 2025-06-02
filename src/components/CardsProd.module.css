@@ -1,0 +1,19 @@
+.CardsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.img {
+  width: 5rem;
+  height: auto;
+}
+
+.h2 {
+  font-size: 1rem;
+}
