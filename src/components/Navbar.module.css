@@ -3,6 +3,10 @@ a {
     color: inherit;
 }
 
+a:hover {
+    color: #E7277F;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -24,14 +28,16 @@ a {
     padding: 0.5rem 1rem;
 }
 
-
-
+.userButton a {
+    background-color: #1F3D87;
+    padding: 1rem;
+}
 
 .carrIcon {
+    display: flex;
+    align-items: center;
     width: 22px;
     height: auto;
-    background-color: rgb(17, 17, 56);
-    border-radius: 1rem;
     padding: 0.5rem;
 }
 

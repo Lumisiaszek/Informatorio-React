@@ -15,7 +15,7 @@ function CardsProd(props: CardsProdProps) {
             <h2 className={styles.h2}>{props.TitleProd}</h2>
             <p>{props.Price}</p>
             {props.discount && <p className={styles.discount}>{props.discount}</p>}   {/* Me gustaria que aparezca el precio original tachado, y el nuevo precio con descuento, pero todavia no lo plantee */}
-            <button>¡Lo quiero!</button>
+            <button className={styles.button}>¡Lo quiero!</button>
         </div>
     );    
 }

@@ -1,0 +1,16 @@
+.bannerContainer {
+  width: 95%;          
+  height: 300px;  
+  margin: 0 auto;      
+  overflow: hidden;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bannerContainer img {
+  width: 100%;          
+  height: 100%;         
+  object-fit: cover;   
+  border-radius: 0.8rem;  
+}
