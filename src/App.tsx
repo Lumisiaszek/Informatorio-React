@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import CardsProd from './components/CardsProd';
 import CardsProdContainer from './components/CardsProdContainer';
 import Navbar from './components/Navbar';
@@ -23,6 +24,7 @@ type Category = {
   src: string;
   descrip: string;
 };
+
 
 const response: ProductSection[] = [
   {
@@ -215,9 +217,16 @@ const categories: Category[] = [
 ];
 
 function App() {
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  // Función para sumar uno al carrito
+  const handleAddToCart = () => {
+    setCartItemCount((count) => count + 1);
+  };
+
   return (
     <>
-      <Navbar cartItemCount={3} />
+      <Navbar cartItemCount={cartItemCount} />
       <BannerSup />
 
       {response.map((section) => (
@@ -229,16 +238,17 @@ function App() {
               src={product.src}
               Price={product.price}
               discount={product.discount}
+              onAddToCart={handleAddToCart}  // Pasamos la función
             />
           ))}
         </CardsProdContainer>
       ))}
 
-        <CardsProdContainer title="Categorías"> {/* Defini acá el titulo pq no puedo con section.category etc. pq son distintos tipos (produc y category), asi uso el contenedor ya creado y no genero uno nuevo, solo cambio las cards, no se si esta bien asi */}
+      <CardsProdContainer title="Categorías">
         {categories.map((category) => (
           <CardsCateg
             key={category.id}
-            title={category.title} 
+            title={category.title}
             src={category.src}
             descrip={category.descrip}
           />

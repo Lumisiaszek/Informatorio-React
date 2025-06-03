@@ -26,13 +26,7 @@
 - **npm** versión >= 8.x  
 - React y dependencias definidas en `package.json` (se instalan con `npm install`)  
 
-## Capturas de la interfaz 📷
- ![Header](./screenshots/1.JPG)
- ![Componente Productos](./screenshots/2.JPG)
- ![Componente Categorías](./screenshots/3.JPG)
-
 ## Instalación ⚙️
-
 
 ```bash
 # Clonar el repositorio
@@ -47,3 +41,9 @@ npm run dev
 
 # Acceder al proyecto desde el navegador
 http://localhost:5173/
+```
+
+## Capturas de la web 📷
+ ![Header](./screenshots/1.JPG)
+ ![Componente Productos](./screenshots/2.JPG)
+ ![Componente Categorías](./screenshots/3.JPG)
