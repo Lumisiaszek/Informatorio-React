@@ -25,7 +25,7 @@ function Navbar({ cartItemCount }: NavbarProps) {
         </div>
         <div className={styles.carrContainer}>
           <img src="/carritoShop.png" alt="Carrito" className={styles.carrIcon}/>
-          {cartItemCount && cartItemCount > 0 && (
+          {(cartItemCount ?? 0) > 0 && (
             <div className={styles.carrComp}>{cartItemCount}</div>
           )}
         </div>

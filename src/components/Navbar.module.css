@@ -48,16 +48,22 @@ a:hover {
     background-color: var(--color-fucsia);
 }
 
+.carrContainer {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carrContainer:hover {
+    transform: scale(1.2);
+}
+
 .carrIcon {
     display: flex;
     align-items: center;
     width: 22px;
     height: auto;
     padding: 0.5rem;
-}
-
-.carrContainer {
-    position: relative;
 }
 
 .carrComp {
@@ -76,3 +82,4 @@ a:hover {
   font-weight: 800;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
+

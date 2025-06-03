@@ -26,4 +26,3 @@ function CardsProd(props: CardsProdProps) {
 
 export default CardsProd;
 
-{/* A mi parecer, la idea es que vos entres a ver la info de la tarjeta(producto) en otra pag, elijas color / tamaño / etc y ahí agregues al carrito, pero queria probar la funcionalidad para esta entrega */}
