@@ -8,27 +8,25 @@ function Navbar({ cartItemCount }: NavbarProps) {
   return (
     <nav className={styles.navbar}>
       <div className={styles.left}>
-        <img src="https://via.placeholder.com/50" alt="Logo" className={styles.logo} />
+        <img src="/logoMaleable.png" alt="Logo" className={styles.logo} />
         <a href="#">Home</a>
         <a href="#">Productos</a>
         <a href="#">Contacto</a>
       </div>
 
       <div className={styles.center}>
-        <input type="text" placeholder="Buscá lo que necesitás" className={styles.search} />
+        <input type="text" placeholder="¿Qué estas buscando?" className={styles.search} />
       </div>
 
       <div className={styles.right}>
         <a href="#">Iniciar sesión</a>
-        <a href="#">Crear usuario</a>
+        <div className={styles.userButton}>
+          <a href="#">Crear usuario</a>
+        </div>
         <div className={styles.carrContainer}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
-            alt="Carrito"
-            className={styles.carrIcon}
-          />
+          <img src="/carritoShop.png" alt="Carrito" className={styles.carrIcon}/>
           {cartItemCount && cartItemCount > 0 && (
-            <span className={styles.cartBadge}>{cartItemCount}</span>
+            <div className={styles.carrComp}>{cartItemCount}</div>
           )}
         </div>
       </div>
