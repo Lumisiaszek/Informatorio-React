@@ -33,7 +33,17 @@
 
 ## Instalación ⚙️
 
-1. Clonar el repositorio:  
-   ```bash
-   git clone https://github.com/Lumisiaszek/Informatorio-React
-   cd entrega-1
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/Lumisiaszek/Informatorio-React
+cd entrega-1
+
+# Instalar las dependencias necesarias
+npm install
+
+# Iniciar el servidor de desarrollo
+npm run dev
+
+# Acceder al proyecto desde el navegador
+http://localhost:5173/
