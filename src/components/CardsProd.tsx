@@ -5,6 +5,7 @@ type CardsProdProps = {
     TitleProd: string;
     Price: string;
     discount?: string;
+    onAddToCart?: () => void; 
 };
 
 function CardsProd(props: CardsProdProps) {
@@ -13,11 +14,15 @@ function CardsProd(props: CardsProdProps) {
         <div className={styles.CardsContainer}>
             <img className={styles.img} src={props.src} alt={props.TitleProd} />
             <h2 className={styles.h2}>{props.TitleProd}</h2>
-            <p>{props.Price}</p>
+            <p className={styles.p}>{props.Price}</p>
             {props.discount && <p className={styles.discount}>{props.discount}</p>}   {/* Me gustaria que aparezca el precio original tachado, y el nuevo precio con descuento, pero todavia no lo plantee */}
-            <button className={styles.button}>¡Lo quiero!</button>
+            <div className={styles.ButtonsContainer}>
+                <button className={styles.buttoninfo}>Ver más</button>
+                <button className={styles.buttoncarrito} onClick={props.onAddToCart}><img src="./public/carritoShop.png" alt="Agregar al carrito"/></button>
+            </div>
         </div>
     );    
 }
 
 export default CardsProd;
+

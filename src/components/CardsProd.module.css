@@ -4,7 +4,7 @@
   justify-content: start;
   align-items: center;
   width: 15rem;
-  height: 24rem;
+  height: 25rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   box-sizing: border-box;
@@ -18,32 +18,76 @@
   object-fit: cover;
   display: block;
   border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.img:hover {
+  transform: scale(1.05);
 }
 
 .h2 {
   font-size: 1rem;
 }
 
+.p {
+  font-size: 0.9rem;
+}
+
 .discount {
   position: absolute;
   top: 5px;
   left: 10px;            
-  background-color: #E7277F; 
+  background-color: var(--color-fucsia); 
   color: white;
   padding: 4px 8px;
   font-size: 0.8rem;
   font-weight: bold;
   border-radius: 0.5rem;
-  pointer-events: none;    /* Para que no interfiera con clicks */
+  pointer-events: none;   
   box-shadow: 0 2px 6px rgba(121, 121, 121, 0.3);
 }
 
-.button {
+.ButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.buttoninfo {
   all: unset;
-  background-color: #1F3D87;
+  background-color: var(--color-azul);
   padding: 0.4rem 0.8rem;
   border-radius: 0.8rem;
   color: white;
-  font-size: 0.8rem;
-  
+  font-size: 0.8rem; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttoninfo:hover {
+  background-color: var(--color-fucsia);
+}
+
+.buttoncarrito {
+  all: unset;
+  background-color: var(--color-fucsia);
+  border-radius: 50%;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.buttoncarrito img {
+  width: 18px;
+  height: auto;
+  filter: invert(100%);
+}
+
+.buttoncarrito:hover {
+  transform: scale(1.2);
 }

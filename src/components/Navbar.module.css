@@ -1,10 +1,11 @@
 a {
     text-decoration: none;
     color: inherit;
+    font-weight: 900;
 }
 
 a:hover {
-    color: #E7277F;
+    color: var(--color-fucsia);
 }
 
 .navbar {
@@ -23,14 +24,38 @@ a:hover {
 
 
 .search {
+    outline: none;   
+    border: 1px solid #7c7c7c;        
     border-radius: 1rem;
     width: 30rem;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 1rem;            
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search:focus {
+    border: 1px solid var(--color-fucsia);     
+    box-shadow: 0 0 0 2px rgba(255, 198, 250, 0.349); 
 }
 
 .userButton a {
-    background-color: #1F3D87;
-    padding: 1rem;
+    background-color: var(--color-azul);
+    padding: 0.4rem 1rem;
+    border-radius: 0.8rem;
+    color: white;
+}
+
+.userButton a:hover {
+    background-color: var(--color-fucsia);
+}
+
+.carrContainer {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carrContainer:hover {
+    transform: scale(1.2);
 }
 
 .carrIcon {
@@ -39,5 +64,22 @@ a:hover {
     width: 22px;
     height: auto;
     padding: 0.5rem;
+}
+
+.carrComp {
+  position: absolute;
+  bottom: 2px;
+  right: -1px;
+  background-color: var(--color-fucsia);
+  color: white;
+  font-size: 0.5rem;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
 

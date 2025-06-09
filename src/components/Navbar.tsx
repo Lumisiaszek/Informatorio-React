@@ -20,17 +20,13 @@ function Navbar({ cartItemCount }: NavbarProps) {
 
       <div className={styles.right}>
         <a href="#">Iniciar sesión</a>
-        <div className='userButton'>
+        <div className={styles.userButton}>
           <a href="#">Crear usuario</a>
         </div>
         <div className={styles.carrContainer}>
-          <img
-            src="/carritoShop.png"
-            alt="Carrito"
-            className={styles.carrIcon}
-          />
-          {cartItemCount && cartItemCount > 0 && (
-            <span className={styles.cartBadge}>{cartItemCount}</span>
+          <img src="/carritoShop.png" alt="Carrito" className={styles.carrIcon}/>
+          {(cartItemCount ?? 0) > 0 && (
+            <div className={styles.carrComp}>{cartItemCount}</div>
           )}
         </div>
       </div>
