@@ -1,10 +1,23 @@
 import styles from './Navbar.module.css';
 
-type NavbarProps = {
-  cartItemCount?: number; // Esto va mockeado para simular el carrito, siguiendo la logica de las clases
+type CartItem = {
+  id: number;
+  title: string;
+  price: string;
 };
 
-function Navbar({ cartItemCount }: NavbarProps) {
+type NavbarProps = {
+  cartItemCount?: number; 
+  onCartClick?: () => void; 
+  isCartOpen?: boolean;
+  cartItems?: CartItem[];
+  onRemoveFromCart?: (id: number) => void;
+  searchText: string;
+  setSearchText: (text: string) => void;
+};
+
+
+function Navbar({ cartItemCount = 0, onCartClick = () => {}, isCartOpen = false, cartItems = [], onRemoveFromCart, setSearchText, searchText }: NavbarProps) {
   return (
     <nav className={styles.navbar}>
       <div className={styles.left}>
@@ -15,21 +28,43 @@ function Navbar({ cartItemCount }: NavbarProps) {
       </div>
 
       <div className={styles.center}>
-        <input type="text" placeholder="¿Qué estas buscando?" className={styles.search} />
+        <input type="text" placeholder="¿Qué estas buscando?" className={styles.search} value={searchText} onChange={(e) => setSearchText(e.target.value)}  />
       </div>
 
-      <div className={styles.right}>
-        <a href="#">Iniciar sesión</a>
-        <div className={styles.userButton}>
-          <a href="#">Crear usuario</a>
+
+      <div className={styles.carrContainer} onClick={onCartClick}>
+        <img src="/carritoShop.png" alt="Carrito" className={styles.carrIcon} />
+        {(cartItemCount ?? 0) > 0 && (
+          <div className={styles.carrComp}>{cartItemCount}</div>
+        )}
+
+      {isCartOpen && cartItems.length > 0 && (
+        <div className={styles.cartDropdown} onClick={(e) => e.stopPropagation()}>
+          <h4 className={styles.cartTitle}>Tu carrito Maleable</h4>
+          <div className={styles.cartItemsContainer}>
+            {cartItems.map((item, index) => (
+              <div key={index} className={styles.cartItem}>
+                <div className={styles.itemCarr}>
+                  <span>{item.title}</span>
+                  <span>{item.price}</span>
+                </div>
+                <button className={styles.deleteButton} onClick={(e) => {e.stopPropagation(); if(onRemoveFromCart) onRemoveFromCart(item.id)}}><img src='/deleteCarr.png'/></button>
+              </div>
+            ))}
+          </div>
+          <div className={styles.cartTotal}>
+            Total:{" "}
+            <strong>
+              $
+              {cartItems
+                .reduce((sum, item) => sum + parseInt(item.price.replace(/\D/g, "")), 0)
+                .toLocaleString("es-AR")}
+            </strong>
+          </div>
+          <button className={styles.finishButton}>Finalizar compra</button>
         </div>
-        <div className={styles.carrContainer}>
-          <img src="/carritoShop.png" alt="Carrito" className={styles.carrIcon}/>
-          {(cartItemCount ?? 0) > 0 && (
-            <div className={styles.carrComp}>{cartItemCount}</div>
-          )}
-        </div>
-      </div>
+      )}
+    </div>
     </nav>
   );
 }

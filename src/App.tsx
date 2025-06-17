@@ -217,45 +217,89 @@ const categories: Category[] = [
 ];
 
 function App() {
-  const [cartItemCount, setCartItemCount] = useState(0);
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Función para sumar uno al carrito
-  const handleAddToCart = () => {
-    setCartItemCount((count) => count + 1);
+  const handleAddToCart = (product: Product) => {
+    setCartItems((prevItems) => [...prevItems, product]);
   };
 
-  return (
-    <>
-      <Navbar cartItemCount={cartItemCount} />
-      <BannerSup />
+  const toggleCart = () => {
+  setIsCartOpen(!isCartOpen);
+  };
 
-      {response.map((section) => (
-        <CardsProdContainer key={section.categoryTitle} title={section.categoryTitle}>
-          {section.products.map((product) => (
+  const handleRemoveFromCart = (id: number) => {
+  setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+  };
+
+  const [searchText, setSearchText] = useState('');
+
+
+return (
+  <>
+    <Navbar
+      cartItemCount={cartItems.length}
+      onCartClick={toggleCart}
+      isCartOpen={isCartOpen}
+      cartItems={cartItems}
+      onRemoveFromCart={handleRemoveFromCart}
+      searchText={searchText}
+      setSearchText={setSearchText}
+
+    />
+    <BannerSup />
+
+    {searchText ? (
+      <CardsProdContainer title={`Resultados para "${searchText}"`}>
+        {response
+          .flatMap(section => section.products)
+          .filter(product =>
+            product.title.toLowerCase().includes(searchText.toLowerCase())
+          )
+          .map(product => (
             <CardsProd
               key={product.id}
               TitleProd={product.title}
               src={product.src}
               Price={product.price}
               discount={product.discount}
-              onAddToCart={handleAddToCart}  // Pasamos la función
+              onAddToCart={() => handleAddToCart(product)}
+            />
+          ))}
+      </CardsProdContainer>
+    ) : (
+      <>
+        {response.map((section) => (
+          <CardsProdContainer
+            key={section.categoryTitle}
+            title={section.categoryTitle}
+          >
+            {section.products.map((product) => (
+              <CardsProd
+                key={product.id}
+                TitleProd={product.title}
+                src={product.src}
+                Price={product.price}
+                discount={product.discount}
+                onAddToCart={() => handleAddToCart(product)}
+              />
+            ))}
+          </CardsProdContainer>
+        ))}
+
+        <CardsProdContainer title="Categorías">
+          {categories.map((category) => (
+            <CardsCateg
+              key={category.id}
+              title={category.title}
+              src={category.src}
+              descrip={category.descrip}
             />
           ))}
         </CardsProdContainer>
-      ))}
-
-      <CardsProdContainer title="Categorías">
-        {categories.map((category) => (
-          <CardsCateg
-            key={category.id}
-            title={category.title}
-            src={category.src}
-            descrip={category.descrip}
-          />
-        ))}
-      </CardsProdContainer>
-    </>
-  );
+      </>
+    )}
+  </>
+);
 }
-
 export default App;
