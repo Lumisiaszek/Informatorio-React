@@ -4,6 +4,7 @@ import CardsProdContainer from './components/CardsProdContainer';
 import Navbar from './components/Navbar';
 import CardsCateg from './components/CardsCateg';
 import BannerSup from './components/BannerSup';
+import Footer from './components/Footer';
 
 type Product = {
   id: number;
@@ -339,6 +340,7 @@ return (
           />
         ))}
       </CardsProdContainer>
+      <Footer />
     </>
   )}
   </>

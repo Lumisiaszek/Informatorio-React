@@ -80,9 +80,13 @@ function Navbar({
       </div>
 
       <div className={styles.carrContainer} onClick={onCartClick}>
+        <a href="#">Iniciar sesión</a>
+        <div className={styles.userButton}>
+          <a href="#">Crear usuario</a>
+        </div>
         <img src="/carritoShop.png" alt="Carrito" className={styles.carrIcon} />
-        {cartItemCount > 0 && <div className={styles.carrComp}>{cartItemCount}</div>}
-
+        {cartItemCount > 0 && <div className={styles.carrComp}>{cartItemCount}
+      </div>}
         {isCartOpen && cartItems.length > 0 && (
           <div className={styles.cartDropdown} onClick={(e) => e.stopPropagation()}>
             <h4 className={styles.cartTitle}>Tu carrito Maleable</h4>
@@ -118,6 +122,7 @@ function Navbar({
           </div>
         )}
       </div>
+
     </nav>
   );
 }

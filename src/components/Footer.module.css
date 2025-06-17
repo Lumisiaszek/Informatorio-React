@@ -1,0 +1,22 @@
+
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--color-azul);
+  color: white;
+  margin-top: 2rem;
+}
+
+.contleft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
