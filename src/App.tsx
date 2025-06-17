@@ -11,6 +11,7 @@ type Product = {
   src: string;
   price: string;
   discount?: string;
+  categoryKey?: string; 
 };
 
 type ProductSection = {
@@ -36,6 +37,8 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/bb/ef/9a/bbef9a086db622c05ca97aa296cd5889.jpg',
         price: '$15.800',
         discount: '25%',
+        categoryKey: 'macetas',
+
       },
       {
         id: 2,
@@ -43,18 +46,22 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/eb/00/03/eb0003bcb08009f843a2e0f84de57ee1.jpg',
         price: '$22.000',
         discount: '20%',
+        categoryKey: 'macetas',
+
       },
       {
         id: 3,
         title: 'Maceta Duo',
         src: 'https://i.pinimg.com/736x/3b/3e/e2/3b3ee2d80ae1277155dcc1c6b9cc6aa1.jpg',
         price: '$22.500',
+        categoryKey: 'macetas',
       },
       {
         id: 4,
         title: 'Lampara Ondas',
         src: 'https://i.pinimg.com/736x/11/76/7f/11767f3d1a6bc82d92605cdbe91fceee.jpg',
         price: '$35.500',
+        categoryKey: 'iluminacion',
       },
       {
         id: 5,
@@ -62,18 +69,21 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/bf/f4/36/bff43647784dae2d637dc2bc3bd9e643.jpg',
         price: '$12.500',
         discount: '35%',
+        categoryKey: 'decoracion',
       },
       {
         id: 6,
         title: 'Jarrón Waves',
         src: 'https://i.pinimg.com/736x/a0/a5/2e/a0a52ef5b00b853297100822d85e3436.jpg',
         price: '$14.500',
+        categoryKey: 'decoracion',
       },
       {
         id: 7,
         title: 'Soporte Auricular',
         src: 'https://i.pinimg.com/736x/f5/6c/bf/f56cbf1feb0b484ff3b1fc126a89ed81.jpg',
         price: '$17.500',
+        categoryKey: 'oficina',
       },
     ],
   },
@@ -98,6 +108,7 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/a9/4b/11/a94b119db1976564a9a92348cad2431a.jpg',
         price: '$38.500',
         discount: '15%',
+
       },
       {
         id: 11,
@@ -105,18 +116,21 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/7e/9b/c8/7e9bc8d5a6a0a9d90403522f72d01977.jpg',
         price: '$28.100',
         discount: '10%',
+
       },
       {
         id: 12,
         title: 'Triple alajero + maceta',
         src: 'https://i.pinimg.com/736x/6a/e0/e7/6ae0e70a07e9a6f0c8e193249768adbd.jpg',
         price: '$33.000',
+  
       },
       {
         id: 13,
         title: 'Set de Posavelas',
         src: 'https://i.pinimg.com/736x/4d/26/e4/4d26e4c899bfe682ef365152899c392d.jpg',
         price: '$13.500',
+
       },
       {
         id: 14,
@@ -134,12 +148,14 @@ const response: ProductSection[] = [
         title: 'Organizador Camino',
         src: 'https://i.pinimg.com/736x/cc/25/72/cc25728c09a9ff223432da09965840fe.jpg',
         price: '$8.500',
+        categoryKey: 'oficina',
       },
       {
         id: 16,
         title: 'Jarron abstracto',
         src: 'https://i.pinimg.com/736x/95/da/af/95daafcd721e1398b96b1d808fa76577.jpg',
         price: '$12.200',
+        categoryKey: 'decoracion',
       },
       {
         id: 17,
@@ -147,24 +163,28 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/66/c9/fe/66c9fef348ccbda7a687515ca2738004.jpg',
         price: '$32.750',
         discount: '10%',
+        categoryKey: 'iluminacion',
       },
       {
         id: 18,
         title: 'Brazo articulado',
         src: 'https://i.pinimg.com/736x/d1/3e/75/d13e759a0df20341d9564f20676c7962.jpg',
         price: '$14.800',
+        categoryKey: 'oficina',
       },
       {
         id: 19,
         title: 'Soporte Tentáculo',
         src: 'https://i.pinimg.com/736x/29/a6/12/29a612294b99b6a07bc76aac79a191ec.jpg',
         price: '$8.900',
+        categoryKey: 'oficina',
       },
       {
         id: 20,
         title: 'Organizador de controles',
         src: 'https://i.pinimg.com/736x/38/d6/90/38d690e83e9bdacd2278387f65a604ec.jpg',
         price: '$7.550',
+        categoryKey: 'oficina',
       },
       {
         id: 21,
@@ -172,10 +192,13 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/d1/4e/05/d14e051066f4d39478030dfc34c3d250.jpg',
         price: '$1.100',
         discount: '25%',
+        categoryKey: 'oficina',
       },
     ],
   },
 ];
+
+
 
 const categories: Category[] = [
   {
@@ -217,8 +240,23 @@ const categories: Category[] = [
 ];
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
+
+  const allProducts: Product[] = response.flatMap(section => section.products);
+
+  const filteredProducts = allProducts.filter(product => {
+  const matchesCategory = selectedCategory ? product.categoryKey === selectedCategory : true;
+  const matchesSearch = product.title.toLowerCase().includes(searchText.toLowerCase());
+  return matchesCategory && matchesSearch;
+  });
+
+
+  const handleCategorySelect = (categoryKey: string | null) => {
+  setSelectedCategory(categoryKey);
+  };
 
   const handleAddToCart = (product: Product) => {
     setCartItems((prevItems) => [...prevItems, product]);
@@ -232,9 +270,6 @@ function App() {
   setCartItems(prevItems => prevItems.filter(item => item.id !== id));
   };
 
-  const [searchText, setSearchText] = useState('');
-
-
 return (
   <>
     <Navbar
@@ -244,19 +279,39 @@ return (
       cartItems={cartItems}
       onRemoveFromCart={handleRemoveFromCart}
       searchText={searchText}
-      setSearchText={setSearchText}
-
+      setSearchText={setSearchText}  
+      categories={[ 
+          { id: 1, title: 'Macetas'},
+          { id: 2, title: 'Iluminacion'},
+          { id: 3, title: 'Decoracion'},
+          { id: 4, title: 'Oficina'},
+      ]}
+      onCategorySelect={handleCategorySelect}      
     />
     <BannerSup />
 
-    {searchText ? (
-      <CardsProdContainer title={`Resultados para "${searchText}"`}>
-        {response
-          .flatMap(section => section.products)
-          .filter(product =>
-            product.title.toLowerCase().includes(searchText.toLowerCase())
-          )
-          .map(product => (
+    {(searchText || selectedCategory) ? (
+      <CardsProdContainer title="Productos filtrados">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map(product => (
+            <CardsProd
+              key={product.id}
+              TitleProd={product.title}
+              src={product.src}
+              Price={product.price}
+              discount={product.discount}
+              onAddToCart={() => handleAddToCart(product)}
+            />
+          ))
+        ) : (
+          <p>No se encontraron productos.</p>
+        )}
+      </CardsProdContainer>
+  ) : (
+    <>
+      {response.map((section) => (
+        <CardsProdContainer key={section.categoryTitle} title={section.categoryTitle} >
+          {section.products.map((product) => (
             <CardsProd
               key={product.id}
               TitleProd={product.title}
@@ -266,39 +321,21 @@ return (
               onAddToCart={() => handleAddToCart(product)}
             />
           ))}
-      </CardsProdContainer>
-    ) : (
-      <>
-        {response.map((section) => (
-          <CardsProdContainer
-            key={section.categoryTitle}
-            title={section.categoryTitle}
-          >
-            {section.products.map((product) => (
-              <CardsProd
-                key={product.id}
-                TitleProd={product.title}
-                src={product.src}
-                Price={product.price}
-                discount={product.discount}
-                onAddToCart={() => handleAddToCart(product)}
-              />
-            ))}
-          </CardsProdContainer>
-        ))}
-
-        <CardsProdContainer title="Categorías">
-          {categories.map((category) => (
-            <CardsCateg
-              key={category.id}
-              title={category.title}
-              src={category.src}
-              descrip={category.descrip}
-            />
-          ))}
         </CardsProdContainer>
-      </>
-    )}
+      ))}
+
+      <CardsProdContainer title="Categorías">
+        {categories.map((category) => (
+          <CardsCateg
+            key={category.id}
+            title={category.title}
+            src={category.src}
+            descrip={category.descrip}
+          />
+        ))}
+      </CardsProdContainer>
+    </>
+  )}
   </>
 );
 }
