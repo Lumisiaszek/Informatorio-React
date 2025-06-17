@@ -53,11 +53,11 @@ function Navbar({
           onMouseLeave={() => setIsProductsOpen(false)}
           >
           <a href="#" onClick={(e) => e.preventDefault()}>
-            Categorías
+            Productos
           </a>
           {isProductsOpen && (
             <ul className={styles.dropdownMenu}>
-              <li onClick={() => handleCategoryClick(null)}>Todas</li>
+              <li onClick={() => handleCategoryClick(null)}>Todos</li>
               {categories.map((cat) => (
                 <li key={cat.id} onClick={() => handleCategoryClick(cat.title)}>
                   {cat.title}

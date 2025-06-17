@@ -1,4 +1,5 @@
 import styles from './CardsProd.module.css';
+import { useState } from 'react';
 
 type CardsProdProps = {    
     src: string;
@@ -9,7 +10,17 @@ type CardsProdProps = {
 };
 
 function CardsProd(props: CardsProdProps) {
-    console.log(props);
+  const [showMensaje, setShowMensaje] = useState(false);
+
+  const onAddToCart = () => {
+    setShowMensaje(true);
+    props.onAddToCart?.();
+
+    setTimeout(() => {
+      setShowMensaje(false);
+    }, 800);
+  };
+
     return (
         <div className={styles.CardsContainer}>
             <img className={styles.img} src={props.src} alt={props.TitleProd} />
@@ -18,7 +29,10 @@ function CardsProd(props: CardsProdProps) {
             {props.discount && <p className={styles.discount}>{props.discount}</p>} 
             <div className={styles.ButtonsContainer}>
                 <button className={styles.buttoninfo}>Ver más</button>
-                <button className={styles.buttoncarrito} onClick={props.onAddToCart}><img src="./public/carritoShop.png" alt="Agregar al carrito"/></button>
+                <button className={styles.buttoncarrito} title='Agregar al carrito' onClick={onAddToCart}><img src="./public/carritoShop.png" alt="Agregar al carrito"/></button>
+                {showMensaje && (
+                 <span className={styles.alertCarr}>Agregado!</span>
+                )}
             </div>
         </div>
     );    

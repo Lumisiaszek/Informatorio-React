@@ -69,14 +69,14 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/bf/f4/36/bff43647784dae2d637dc2bc3bd9e643.jpg',
         price: '$12.500',
         discount: '35%',
-        categoryKey: 'decoracion',
+        categoryKey: 'decoración',
       },
       {
         id: 6,
         title: 'Jarrón Waves',
         src: 'https://i.pinimg.com/736x/a0/a5/2e/a0a52ef5b00b853297100822d85e3436.jpg',
         price: '$14.500',
-        categoryKey: 'decoracion',
+        categoryKey: 'decoración',
       },
       {
         id: 7,
@@ -95,12 +95,14 @@ const response: ProductSection[] = [
         title: 'Trio de macetas',
         src: 'https://i.pinimg.com/736x/e4/bd/b1/e4bdb1160c574d821e86ef6f59bf958b.jpg',
         price: '$23.000',
+        categoryKey: 'macetas',
       },
       {
         id: 9,
         title: 'Duo de contenedores',
         src: 'https://i.pinimg.com/736x/e2/75/f1/e275f16705ffa5ca7b7d56322212dadd.jpg',
         price: '$14.200',
+        categoryKey: 'oficina',
       },
       {
         id: 10,
@@ -116,6 +118,7 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/7e/9b/c8/7e9bc8d5a6a0a9d90403522f72d01977.jpg',
         price: '$28.100',
         discount: '10%',
+        categoryKey: 'decoración',
 
       },
       {
@@ -130,6 +133,7 @@ const response: ProductSection[] = [
         title: 'Set de Posavelas',
         src: 'https://i.pinimg.com/736x/4d/26/e4/4d26e4c899bfe682ef365152899c392d.jpg',
         price: '$13.500',
+        categoryKey: 'decoración',
 
       },
       {
@@ -155,7 +159,7 @@ const response: ProductSection[] = [
         title: 'Jarron abstracto',
         src: 'https://i.pinimg.com/736x/95/da/af/95daafcd721e1398b96b1d808fa76577.jpg',
         price: '$12.200',
-        categoryKey: 'decoracion',
+        categoryKey: 'decoración',
       },
       {
         id: 17,
@@ -163,7 +167,7 @@ const response: ProductSection[] = [
         src: 'https://i.pinimg.com/736x/66/c9/fe/66c9fef348ccbda7a687515ca2738004.jpg',
         price: '$32.750',
         discount: '10%',
-        categoryKey: 'iluminacion',
+        categoryKey: 'iluminación',
       },
       {
         id: 18,
@@ -282,16 +286,17 @@ return (
       setSearchText={setSearchText}  
       categories={[ 
           { id: 1, title: 'Macetas'},
-          { id: 2, title: 'Iluminacion'},
-          { id: 3, title: 'Decoracion'},
+          { id: 2, title: 'Iluminación'},
+          { id: 3, title: 'Decoración'},
           { id: 4, title: 'Oficina'},
+          { id: 5, title: 'Arquitectura'},
       ]}
       onCategorySelect={handleCategorySelect}      
     />
     <BannerSup />
 
     {(searchText || selectedCategory) ? (
-      <CardsProdContainer title="Productos filtrados">
+      <CardsProdContainer title={selectedCategory ? `Categoría ${selectedCategory}` : ''}>
         {filteredProducts.length > 0 ? (
           filteredProducts.map(product => (
             <CardsProd
