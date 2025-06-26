@@ -12,13 +12,15 @@ return (
             </div>
         </div>
         <div className={styles.contcenter}>
+            <div>
             <a href="#"><img src="/instagram.png" alt="" /></a>
             <a href="#"><img src="/facebook.png" alt="" /></a>
+            </div>
             <p className={styles.textcopy}>© 2025 Maleable. Todos los derechos reservados.</p>
         </div>
         <div className={styles.contright}>
             <a href="#"><img src="/ubicacion.png" alt="" />Calle Siempre viva 742</a>
-            <a href="#"><img src="/contacto.png" alt="" />+54 9 3624378798</a>
+            <a href="#"><img src="/whatsapp.png" alt="" />+54 9 3624378798</a>
             <a href="#"><img src="/correo.png" alt="" />maleableShop@gmail.com</a>
         </div>
     </div>
