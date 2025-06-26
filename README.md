@@ -12,7 +12,7 @@
 
 - **main**: Rama principal.
 - **entrega-1**: Rama de desarrollo para la primera entrega y pruebas.  
-- **entrega-2**: Rama de desarrollo para la psegunda entrega y pruebas. 
+- **entrega-2**: Rama de desarrollo para la segunda entrega y pruebas. 
 
 ## Tecnologías 🚀
 
