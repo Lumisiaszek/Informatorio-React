@@ -1,6 +1,6 @@
 # Maleable Tienda Online 🛒
 
-- Primer entrega proyecto de tienda online desarrollada en **React**.
+- Segunda entrega proyecto de tienda online desarrollada en **React**.
 - Objetos mockeados para representación visual.
 
 ## Integrante / Profesor a cargo 👤
@@ -12,6 +12,7 @@
 
 - **main**: Rama principal.
 - **entrega-1**: Rama de desarrollo para la primera entrega y pruebas.  
+- **entrega-2**: Rama de desarrollo para la segunda entrega y pruebas. 
 
 ## Tecnologías 🚀
 
@@ -44,6 +45,15 @@ http://localhost:5173/
 ```
 
 ## Capturas de la web 📷
- ![Header](./screenshots/1.JPG)
- ![Componente Productos](./screenshots/2.JPG)
- ![Componente Categorías](./screenshots/3.JPG)
+ ![Carrito de compras](./screenshots_video/1.JPG)
+ ![Categorías](./screenshots_video/2.JPG)
+ ![Barra de búsqueda](./screenshots_video/3.JPG)
+
+ ## Video de funcionamiento 🎥
+ - Podes encontrar el video en la carpeta **screenshots_video**
+ - Tambien podes verlo haciendo [**click acá**](https://drive.google.com/file/d/1bQysk29DypdLUcRJhrB4etzc2xcfAJCm/view?usp=sharing)
+
+<br>
+
+## **Gracias por visitar este repo 🙌**
+✨ Proyecto realizado como tienda e-commerce de mi emprendimiento de impresión 3D.<br>

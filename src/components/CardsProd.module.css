@@ -91,3 +91,7 @@
 .buttoncarrito:hover {
   transform: scale(1.2);
 }
+
+.alertCarr {
+  color: var(--color-fucsia);
+}
